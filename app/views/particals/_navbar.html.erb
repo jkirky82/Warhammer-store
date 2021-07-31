@@ -9,10 +9,10 @@
           <%= link_to "Home", root_path, class: "nav-link active"%>
         </li>
         <li class="nav-item">
-          <%= link_to "Create Listing", root_path, class: "nav-link active"%>
+          <%= link_to "Browse", listings_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to "Home", root_path, class: "nav-link active"%>
+          <%= link_to "Create Listing", new_listings_path, class: "nav-link" %>
         </li>
         <% if user_signed_in? %>
           <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>

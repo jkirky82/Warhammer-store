@@ -1,0 +1,28 @@
+<h1>create a listing</h1>
+
+<%= form_with(model: @listing) do |form| %>
+  <div class="d-flex justify-content-center">
+    <div class="card mb-3" style="width: 50rem;">
+      <div class="field">
+        <%# Add bootstrap class to forms%>
+        <%= form.label :title, class: "form-label mr-1" %> 
+        <%= form.text_field :title, class: "form-control" %>
+      </div>
+
+      <div class="field">
+        <%# Add bootstrap class to forms%>
+        <%= form.label :description, class: "form-label mr-1" %>
+        <%= form.text_area :description, class: "form-control" %>
+      </div>
+
+      <div class="field">
+        <%# Add bootstrap class to forms%>
+        <%= form.label :price, class: "form-label mr-1" %>
+        <%= form.text_field :price, class: "form-control" %>
+      </div>
+    </div>
+ 
+    <%= form.submit %>
+    <%= link_to 'Back', listings_path %>
+  </div>
+<% end %>

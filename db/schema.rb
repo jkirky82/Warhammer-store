@@ -10,29 +10,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_30_104036) do
+ActiveRecord::Schema.define(version: 2021_07_31_111623) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "locations", force: :cascade do |t|
+  create_table "army_factions", force: :cascade do |t|
+    t.string "faction"
+    t.bigint "listing_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["listing_id"], name: "index_army_factions_on_listing_id"
+  end
+
+  create_table "listings", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.float "price"
+    t.boolean "availability"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_listings_on_user_id"
+  end
+
+  create_table "profiles", force: :cascade do |t|
     t.string "street_address"
     t.integer "street_number"
     t.string "suburb"
     t.string "state"
     t.integer "postcode"
-    t.bigint "profile_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["profile_id"], name: "index_locations_on_profile_id"
-  end
-
-  create_table "profiles", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.bigint "user_id"
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
@@ -45,9 +55,12 @@ ActiveRecord::Schema.define(version: 2021_07_30_104036) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "username"
     t.string "email"
+    t.string "first_name"
+    t.string "last_name"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "locations", "profiles"
+  add_foreign_key "army_factions", "listings"
+  add_foreign_key "listings", "users"
   add_foreign_key "profiles", "users"
 end
