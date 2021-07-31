@@ -14,5 +14,9 @@
         <li class="nav-item">
           <%= link_to "Home", root_path, class: "nav-link active"%>
         </li>
+        <% if user_signed_in? %>
+          <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+        <% end %>
       </ul>
+      
 </nav>
