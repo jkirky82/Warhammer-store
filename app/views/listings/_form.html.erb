@@ -1,28 +1,15 @@
-<h1>create a listing</h1>
 
-<%= form_with(model: @listing) do |form| %>
-  <div class="d-flex justify-content-center">
-    <div class="card mb-3" style="width: 50rem;">
-      <div class="field">
-        <%# Add bootstrap class to forms%>
-        <%= form.label :title, class: "form-label mr-1" %> 
-        <%= form.text_field :title, class: "form-control" %>
-      </div>
+<%= simple_form_for(@listing) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-      <div class="field">
-        <%# Add bootstrap class to forms%>
-        <%= form.label :description, class: "form-label mr-1" %>
-        <%= form.text_area :description, class: "form-control" %>
-      </div>
+  <div class="form-inputs">      
+    <p class="mt-3"><%= f.input :title %></p>
+    <p class="mt-3"><%= f.input :description %></p>
+    <p class="mt-3"><%= f.input :price %></p>
 
-      <div class="field">
-        <%# Add bootstrap class to forms%>
-        <%= form.label :price, class: "form-label mr-1" %>
-        <%= form.text_field :price, class: "form-control" %>
-      </div>
-    </div>
- 
-    <%= form.submit %>
-    <%= link_to 'Back', listings_path %>
-  </div>
+    <p class="mt-3"><%= f.input :army_faction_id %></p>
+
+    <%= f.button :submit, class:"btn btn-info btn-lg btn-block mt-3 mb-3 " %> 
+  </div> 
 <% end %>

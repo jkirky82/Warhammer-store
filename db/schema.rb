@@ -10,17 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_31_111623) do
+ActiveRecord::Schema.define(version: 2021_08_01_173542) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "army_factions", force: :cascade do |t|
     t.string "faction"
-    t.bigint "listing_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["listing_id"], name: "index_army_factions_on_listing_id"
   end
 
   create_table "listings", force: :cascade do |t|
@@ -31,6 +29,8 @@ ActiveRecord::Schema.define(version: 2021_07_31_111623) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id"
+    t.bigint "army_faction_id"
+    t.index ["army_faction_id"], name: "index_listings_on_army_faction_id"
     t.index ["user_id"], name: "index_listings_on_user_id"
   end
 
@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(version: 2021_07_31_111623) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "army_factions", "listings"
+  add_foreign_key "listings", "army_factions"
   add_foreign_key "listings", "users"
   add_foreign_key "profiles", "users"
 end
