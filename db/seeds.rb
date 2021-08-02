@@ -7,3 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 armyfaction = Armyfaction.create([{name:"Space Marines"},{name:"Necrons"},{name:"Orks"},{name:"Adepta Sororitas"}])
+
+painted = Painted.create([{painted:"Painted"},{Painted:"Not Painted"}])
+
+condition = Condition.create([{condition:"Brand New"},{condition:"Slightly Used"}, {condition:"Well Worn"}, {condition:"Damaged"}])
