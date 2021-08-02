@@ -7,10 +7,11 @@ class ListingsController < ApplicationController
 
 
   def index
-    @listings = Listing.where(user_id:current_user.id)
+    @listings = Listing.all
   end
 
   def show
+
   end
 
   def new 
@@ -44,13 +45,11 @@ class ListingsController < ApplicationController
   private
 
 
- 
-
   def set_listing
     @listing = Listing.find(params[:id])
   end
 
   def listing_params
-    params.require(:listing).permit(:title, :description, :price, :armyfaction_id, :user_id, :painted_id, :condition_id)
+    params.require(:listing).permit(:title, :description, :price, :armyfaction_id, :user_id, :paint_id, :condition_id)
   end
 end

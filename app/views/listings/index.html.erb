@@ -1,3 +1,21 @@
-<h1>index</h1>
+<h1 class="hero-title text-center">Listings</h1>
 
-</h1><%= @listing.each%>
+<div class='container'>
+  <div class='d-flex justify-content-between'>
+    <% @listings.each do |listing| %>
+      <div class='col mb-2'>
+        <div class='card border-dark h-100'>
+          <div class='card-body'>
+            <h5><%= listing.title %></h5>
+            <h6 class='card-subtitle text-muted'>Added <%= time_ago_in_words(listing.created_at) %> ago</h6>
+            <p class='card-text text-secondary text-truncate'><%= listing.description %></p>
+            <div class='d-flex justify-content-between'>
+              <%= link_to "See More", listing_path(listing.id), class: "btn btn-primary" %>
+              <h5>$<%= listing.price %></h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

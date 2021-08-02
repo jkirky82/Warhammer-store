@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_02_084438) do
+ActiveRecord::Schema.define(version: 2021_08_02_113437) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,9 +22,9 @@ ActiveRecord::Schema.define(version: 2021_08_02_084438) do
   end
 
   create_table "conditions", force: :cascade do |t|
-    t.boolean "condition"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
   end
 
   create_table "listings", force: :cascade do |t|
@@ -36,18 +36,18 @@ ActiveRecord::Schema.define(version: 2021_08_02_084438) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id"
     t.bigint "armyfaction_id"
-    t.bigint "painted_id"
+    t.bigint "paint_id"
     t.bigint "condition_id"
     t.index ["armyfaction_id"], name: "index_listings_on_armyfaction_id"
     t.index ["condition_id"], name: "index_listings_on_condition_id"
-    t.index ["painted_id"], name: "index_listings_on_painted_id"
+    t.index ["paint_id"], name: "index_listings_on_paint_id"
     t.index ["user_id"], name: "index_listings_on_user_id"
   end
 
-  create_table "painteds", force: :cascade do |t|
-    t.boolean "painted"
+  create_table "paints", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
   end
 
   create_table "profiles", force: :cascade do |t|
@@ -78,7 +78,7 @@ ActiveRecord::Schema.define(version: 2021_08_02_084438) do
 
   add_foreign_key "listings", "armyfactions"
   add_foreign_key "listings", "conditions"
-  add_foreign_key "listings", "painteds"
+  add_foreign_key "listings", "paints"
   add_foreign_key "listings", "users"
   add_foreign_key "profiles", "users"
 end
