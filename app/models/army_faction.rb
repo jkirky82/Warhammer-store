@@ -1,2 +1,0 @@
-class ArmyFaction < ApplicationRecord
-end

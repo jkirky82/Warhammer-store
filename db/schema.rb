@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_01_173542) do
+ActiveRecord::Schema.define(version: 2021_08_02_064121) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "army_factions", force: :cascade do |t|
-    t.string "faction"
+  create_table "armyfactions", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -29,8 +29,8 @@ ActiveRecord::Schema.define(version: 2021_08_01_173542) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id"
-    t.bigint "army_faction_id"
-    t.index ["army_faction_id"], name: "index_listings_on_army_faction_id"
+    t.bigint "armyfaction_id"
+    t.index ["armyfaction_id"], name: "index_listings_on_armyfaction_id"
     t.index ["user_id"], name: "index_listings_on_user_id"
   end
 
@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(version: 2021_08_01_173542) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "listings", "army_factions"
+  add_foreign_key "listings", "armyfactions"
   add_foreign_key "listings", "users"
   add_foreign_key "profiles", "users"
 end
