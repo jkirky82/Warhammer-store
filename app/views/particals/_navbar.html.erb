@@ -15,7 +15,9 @@
           <%= link_to "Create Listing", new_listing_path, class: "nav-link" %>
         </li>
         <% if user_signed_in? %>
-          <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+          <%= link_to "Sign out", destroy_user_session_path, :method => :delete,  class: "nav-link" %>
+        <% else %>
+          <%= link_to "Sign in / Log Out", new_user_registration_path, :method => :delete,  class: "nav-link" %>
         <% end %>
       </ul>
       

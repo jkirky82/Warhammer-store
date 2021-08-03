@@ -11,3 +11,8 @@
 
 <h1><%= @listing.price%></h1>
 
+<% if current_user && current_user.id == @listing.user_id %>
+  <%= link_to "Edit", edit_listing_path(@listing.id)%>
+  <%= link_to "Delete", @listing, method: :delete, data: {confirm: "Are you sure?"}%>
+<% end %>
+
