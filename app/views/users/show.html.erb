@@ -1,0 +1,12 @@
+<%= @user.first_name %>
+<br>
+<%= @user.last_name %>
+<br>
+<%= @user.email %>
+<br>
+<%= @user.profile.street_address %>
+<br>
+<%= @user.profile.street_number %>
+
+<%= link_to "Edit Account", edit_user_path(@user.id)%>
+<%= link_to "Delete Account", @user, method: :delete, data: {confirm: "Are you sure?"}%>

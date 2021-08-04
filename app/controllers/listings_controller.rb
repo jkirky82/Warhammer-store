@@ -37,6 +37,15 @@ class ListingsController < ApplicationController
   end
 
   def update 
+    respond_to do |format|
+      if @listing.update(listing_params)
+        format.html { redirect_to @listing, notice: "Listing was successfully updated." }
+        format.json { render :show, status: :ok, location: @listing }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+        format.json { render json: @listing.errors, status: :unprocessable_entity }
+      end
+    end
   end
   
   def destroy
