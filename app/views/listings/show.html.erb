@@ -1,5 +1,5 @@
 <h1>show</h1>
-
+<%= image_tag @listing.picture, class: "card-img-top" if @listing.picture.attached? %>
 <h1><%= @listing.title%></h1>
 
 <h3><%= @listing.description%></h3>
@@ -14,5 +14,20 @@
 <% if current_user && current_user.id == @listing.user_id %>
   <%= link_to "Edit", edit_listing_path(@listing.id)%>
   <%= link_to "Delete", @listing, method: :delete, data: {confirm: "Are you sure?"}%>
+  <%else%>
+  <p><%= render_buy_button %></p>
 <% end %>
 
+<script src="https://js.stripe.com/v3/"></script>
+<script>
+  document
+    .querySelector("[data-stripe='payment']")
+    .addEventListener("click", () => {
+      const stripe = Stripe(
+        "<%= Rails.application.credentials.dig(:stripe, :public_key) %>"
+      )
+      stripe.redirectToCheckout({
+        sessionId: "<%= @session_id %>"
+      })
+    })
+</script>

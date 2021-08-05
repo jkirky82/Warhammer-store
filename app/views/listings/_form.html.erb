@@ -11,6 +11,7 @@
     <p class="mt-3"><%= f.association :armyfaction, label: "Faction" %></p>
     <p class="mt-3"><%= f.association :paint, label: "Painted" %></p>
     <p class="mt-3"><%= f.association :condition, label: "Condition" %></p>
+    <%= f.input :picture, label: "Upload Image" %>
 
     <%= f.button :submit, class:"btn btn-info btn-lg btn-block mt-3 mb-3 " %> 
   </div> 
