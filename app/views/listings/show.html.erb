@@ -15,6 +15,7 @@
   <%= link_to "Edit", edit_listing_path(@listing.id)%>
   <%= link_to "Delete", @listing, method: :delete, data: {confirm: "Are you sure?"}%>
   <%else%>
+  <%=button_to "Add to cart", line_items_path(:listing_id => @listing.id)%>
   <p><%= render_buy_button %></p>
 <% end %>
 

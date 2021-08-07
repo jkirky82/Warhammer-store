@@ -1,0 +1,17 @@
+<h2>Cart show</h2>
+<ul>
+  <% @cart.line_items.each do |line_item| %>
+    <li>Item: <%= line_item.product.name %>/ Price: <%= number_to_currency(line_item.product.price)%>
+    <ul>
+      <li>
+        <%= link_to "Remove item", line_item_path(line_item), method: :delete %>
+      </li>
+    </ul>
+    
+  <% end %>
+</ul>
+
+
+<%= link_to "Proceed to checkout", new_order_path %><br>
+
+<%= link_to "Empty cart", cart_path(@current_cart),method: :delete, data: {confirm: "Are you sure?"}%>
