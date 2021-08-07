@@ -7,4 +7,9 @@ class User < ApplicationRecord
   has_one :listing, :dependent => :destroy
 
   accepts_nested_attributes_for :profile
+
+  validates :username, presence: true, length: {minimum: 3, too_short: "3 is the minimum number of caracter"}      
+  validates :first_name, presence: true   
+  validates :last_name, presence: true   
+  
 end
