@@ -1,13 +1,18 @@
-<h1 class = "center">Warhammer </h1>
+<h1 class = "text-center">Warhammer </h1>
 
-<p class = "center" >Image for browse herewd</p>
+
+<div class='d-flex justify-content-center'>
+  <p class = "center" >Image for browse herewd</p>
+</div>
+
+<%= image_tag "homepage", class: "homeimage" %>
+<br><br>
 <div class='d-flex justify-content-center'>
   <%= link_to "Browse", listings_path,  class: "btn btn-primary center"%>
 </div>
-<p>create your own listing</p>
+<br>
+<%= image_tag "sell", class: "homeimage" %>
+<br><br>
 <div class='d-flex justify-content-center'>
   <%= link_to "Create Your Own Listing", new_listing_path,  class: "btn btn-primary center"%>
 </div>
-
-
-

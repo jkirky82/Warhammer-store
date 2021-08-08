@@ -1,9 +1,9 @@
 <h1 class="hero-title text-center">Listings</h1>
 
 <div class='container'>
-  <div class='d-flex justify-content-between'>
+  <div class='row row-cols-sm-1 row-cols-md-2 row-cols-lg-4'>
     <% @listings.each do |listing| %>
-      <div class='col mb-2'>
+      <div class='col mb-4'>
         <div class='card border-dark h-100'>
           <%= image_tag listing.picture, class: "card-img top thumbnail" if listing.picture.attached?  %>
           <div class='card-body'>
