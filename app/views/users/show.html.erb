@@ -1,12 +1,22 @@
-<%= @user.first_name %>
-<br>
-<%= @user.last_name %>
-<br>
-<%= @user.email %>
-<br>
-<%= @user.profile.street_address %>
-<br>
-<%= @user.profile.street_number %>
+<h2 class = "text-center">Pofile</h2>
 
-<%= link_to "Edit Account", edit_user_path(@user.id)%>
-<%= link_to "Delete Account", @user, method: :delete, data: {confirm: "Are you sure?"}%>
+<div class = "d-flex justify-content-center">  
+  <div class="card mb-5" style="width: 40rem;">
+   <div class="card-body">
+
+      <p  class='card-title text-center'><%= @user.first_name %> <%= @user.last_name %> </p>
+
+
+      
+
+      <p class = "text-center"><%= @user.email %></p>
+
+      <p class = "text-center"> <%= @user.profile.street_address %></p>
+      <p class = "text-center">  <%= @user.profile.street_address %></p>
+      
+
+      <%= link_to "Edit Account", edit_user_path(@user.id)%>
+      <%= link_to "Delete Account", @user, method: :delete, data: {confirm: "Are you sure?"}%>
+    </div>
+  </div>
+</div>
