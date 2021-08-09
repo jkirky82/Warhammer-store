@@ -112,6 +112,8 @@ GEM
     orm_adapter (0.5.0)
     pg (1.2.3)
     popper_js (1.16.0)
+    puma (5.4.0)
+      nio4r (~> 2.0)
     racc (1.5.2)
     rack (2.2.3)
     rack-mini-profiler (2.3.2)
@@ -215,6 +217,7 @@ DEPENDENCIES
   jquery-rails
   listen (~> 3.3)
   pg (~> 1.1)
+  puma (~> 5.0)
   rack-mini-profiler (~> 2.0)
   rails (~> 6.1.4)
   sass-rails (>= 6)
@@ -229,4 +232,4 @@ RUBY VERSION
    ruby 2.7.1p83
 
 BUNDLED WITH
-   2.2.19
+   2.2.25
