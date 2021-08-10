@@ -1,24 +1,25 @@
-<h1>show</h1>
-<%= image_tag @listing.picture, class: "card-img-top" if @listing.picture.attached? %>
-<h1><%= @listing.title%></h1>
+<h1 class= " hero-title text-center">show</h1>
 
-<h3><%= @listing.description%></h3>
+<div class= "container">
+  <%= image_tag @listing.picture, class: "card-img top thumbnail" if @listing.picture.attached? %>
+  <h1><%= @listing.title%></h1>
 
-<h1><%= @listing.armyfaction.name%></h1>
-<h1><%= @listing.condition.name%></h1>
-<h1><%= @listing.paint.name%></h1>
+  <h3>description: <%= @listing.description%></h3>
+
+  <h1>Faction: <%= @listing.armyfaction.name%></h1>
+  <h1>Condition: <%= @listing.condition.name%></h1>
+  <h1>Painted: <%= @listing.paint.name%></h1>
 
 
-<h1><%= @listing.price%></h1>
+  <h1>Price: $<%= @listing.price%></h1>
 
-<% if current_user && current_user.id == @listing.user_id %>
-  <%= link_to "Edit", edit_listing_path(@listing.id)%>
-  <%= link_to "Delete", @listing, method: :delete, data: {confirm: "Are you sure?"}%>
-  <%else%>
-  <%=button_to "Add to cart", line_items_path(:listing_id => @listing.id)%>
-  <p><%= render_buy_button %></p>
-<% end %>
-
+  <% if current_user && current_user.id == @listing.user_id %>
+    <%= link_to "Edit", edit_listing_path(@listing.id), class: "btn btn-warning" %>
+    <%= link_to "Delete", @listing, method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger mr-3" %>
+    <%else%>
+    <p><%= render_buy_button %></p>
+  <% end %>
+</div>
 <script src="https://js.stripe.com/v3/"></script>
 <script>
   document
