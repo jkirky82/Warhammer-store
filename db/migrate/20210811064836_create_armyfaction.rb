@@ -1,4 +1,4 @@
-class CreateArmyfactions < ActiveRecord::Migration[6.1]
+class CreateArmyfaction < ActiveRecord::Migration[6.1]
   def change
     create_table :armyfactions do |t|
       t.string :name
