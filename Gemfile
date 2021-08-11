@@ -43,11 +43,13 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 end
 
+gem 'ultrahook', '~> 0.1.4'
 gem 'bootstrap', '~> 4.5.2'
 gem 'jquery-rails'
 gem 'simple_form'
 gem 'devise'
 gem 'stripe-rails'
+gem "aws-sdk-s3", "~> 1.98"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
