@@ -1,6 +1,7 @@
 class PaymentsController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [:webhook]
   
+
   def webhook
     p params
     p "-----------------param------------------"
@@ -33,4 +34,9 @@ class PaymentsController < ApplicationController
     p @listing
   end
 
+  def success
+    listing_id = params [:listingId]
+    @listing = Listing.find(listing_id)
+    @purchase = Payment.find_by_listing_id(listing_id)
+  end
 end

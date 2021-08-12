@@ -11,5 +11,3 @@ armyfaction = Armyfaction.create([{name:"Space Marines"},{name:"Necrons"},{name:
 conditions = Condition.create([{name:"Brand New"},{name:"Slightly Used"}, {name:"Well Worn"}, {name:"Damaged"}])
 
 paint = Paint.create([{name:"Painted"},{name:"Not Painted"}])
-
-
