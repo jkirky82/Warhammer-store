@@ -1,11 +1,16 @@
 Rails.application.routes.draw do
+  #Home page
   root 'users#index'
+
+  # Sets up devise routes 
   devise_for :users
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  # sets up all listings and user routes
   resources :listings
   resources :users
-  
-get "/payments/success", to: "payments#success"
-post "payments/webhook", to: "payments#webhook"
+
+  #Sets up payment routes for payment controller
+  get "/payments/success", to: "payments#success"
+  post "payments/webhook", to: "payments#webhook"
 
 end

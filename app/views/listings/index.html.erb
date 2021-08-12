@@ -1,7 +1,10 @@
-<h1 class="hero-title text-center">Listings</h1>
 
+<!-- Browse page that will display all created listings -->
+<h1 class="hero-title text-center">Listings</h1>
 <div class='container'>
   <div class='row row-cols-sm-1 row-cols-md-2 row-cols-lg-4'>
+
+   <!-- Loops through each listing and displays the information in the table -->
     <% @listings.each do |listing| %>
       <div class='col mb-4'>
         <div class='card border-dark h-100'>

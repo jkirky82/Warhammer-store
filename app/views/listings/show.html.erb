@@ -1,5 +1,6 @@
-<h1 class= " hero-title text-center">show</h1>
+<!-- Shows a specific listing to buy, edit or delete -->
 
+<h1 class= " hero-title text-center">show</h1>
 <div class= "container">
   <%= image_tag @listing.picture, class: "card-img top thumbnail" if @listing.picture.attached? %>
   <h1><%= @listing.title%></h1>
@@ -9,13 +10,14 @@
   <h1>Faction: <%= @listing.armyfaction.name%></h1>
   <h1>Condition: <%= @listing.condition.name%></h1>
   <h1>Painted: <%= @listing.paint.name%></h1>
-
-
   <h1>Price: $<%= @listing.price%></h1>
 
+  <!-- If the current user id is the same as the listing user id you can edit and delete the page -->
   <% if current_user && current_user.id == @listing.user_id %>
     <%= link_to "Edit", edit_listing_path(@listing.id), class: "btn btn-warning" %>
     <%= link_to "Delete", @listing, method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger mr-3" %>
+
+    <!-- else you will have a buy button that takes you to stripe -->
     <%else%>
     <p><%= render_buy_button %></p>
   <% end %>

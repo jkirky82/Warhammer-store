@@ -1,3 +1,4 @@
+<!-- Profile page that will display all the users current data -->
 <h2 class = "text-center">Pofile</h2>
 
 <div class = "d-flex justify-content-center">  
@@ -5,16 +6,10 @@
    <div class="card-body">
 
       <p  class='card-title text-center'><%= @user.first_name %> <%= @user.last_name %> </p>
-
-
-      
-
       <p class = "text-center"><%= @user.email %></p>
-
       <p class = "text-center"> <%= @user.profile.street_number %> <%= @user.profile.street_address %></p>
-      
-      
 
+      <!-- Create a button to edit or delete there current profile -->
       <%= link_to "Edit Account", edit_user_path(@user.id)%>
       <%= link_to "Delete Account", @user, method: :delete, data: {confirm: "Are you sure?"}%>
     </div>

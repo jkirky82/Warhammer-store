@@ -5,11 +5,12 @@ class ListingsController < ApplicationController
   #before_action :set_listing, only: %i[ show ]
   before_action :set_listing, only: [ :show, :update, :edit, :destroy ]
 
-
+  #grabs all the data from the listin table and sends it to the index page
   def index
     @listings = Listing.all
   end
 
+  #Sets up stripe payment for the button on the show page 
   def show
     stripe_session = Stripe::Checkout::Session.create(
       payment_method_types: ['card'],
@@ -49,7 +50,9 @@ class ListingsController < ApplicationController
   def edit
   end
 
+  #creates a new listing 
   def create
+    #The data will come from the listing_params method
     @listing = Listing.new(listing_params)
     @listing.user_id = current_user.id
 
@@ -64,6 +67,7 @@ class ListingsController < ApplicationController
     end
   end
 
+  #Has the same function as in create, but is used to update all columns in a row 
   def update 
     respond_to do |format|
       if @listing.update(listing_params)
@@ -76,6 +80,7 @@ class ListingsController < ApplicationController
     end
   end
   
+  #Will destory a row in the listing table 
   def destroy
     @listing.destroy
     respond_to do |format|
@@ -86,11 +91,12 @@ class ListingsController < ApplicationController
 
   private
 
-
+  # sets the listing based on the ID 
   def set_listing
     @listing = Listing.find(params[:id])
   end
 
+  #This is where the hard paramaitars are definded
   def listing_params
     params.require(:listing).permit(:title, :description, :price, :armyfaction_id, :user_id, :paint_id, :condition_id, :picture)
   end

@@ -1,7 +1,5 @@
 class UsersController < ApplicationController
-
   before_action :set_user, only: [ :show, :update, :edit, :destroy ]
-
 
   def index
   end
@@ -12,6 +10,7 @@ class UsersController < ApplicationController
   def edit  
   end
   
+  #Upadtes all columns of all sers information in a row 
   def update
     respond_to do |format|
       if @user.update(user_params)
@@ -24,6 +23,7 @@ class UsersController < ApplicationController
     end
   end
 
+  #Destory a user account and the profile as it is linked
   def destroy
     @user.profile.destroy
     @user.destroy
