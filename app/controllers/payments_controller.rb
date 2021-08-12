@@ -36,6 +36,6 @@ class PaymentsController < ApplicationController
   def success 
     listing_id = params[:listingId]
     @listing = Listing.find(listing_id)
-
   end
+  
 end
